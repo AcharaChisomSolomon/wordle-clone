@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    padding: 30px;
+}
+
+.loader {
+    font-size: 40px;
+    animation: spin 1.5s linear infinite;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.word {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.letter {
+    height: 45px;
+    width: 45px;
+    font-size: 30px;
+    text-transform: uppercase;
+    border: 3px solid #ccc;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.correct {
+    background: green;
+}
+
+.wrong {
+    background: grey;
+}
+
+.close {
+    background: yellow;
+}
+
+.wrong-word {
+    animation: flash 1s;
+}
+
+@keyframes flash {
+    5% {
+        border-color: crimson;
+    }
+
+    100% {
+        border-color: #ccc;
+    }
+}
