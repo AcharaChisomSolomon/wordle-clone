@@ -15,6 +15,7 @@ let isTakingInput = (guessLength < wordLength) && (currentLetterLimit < totalLet
 let GameInPlay = true
 
 const validateWord = async (val) => {
+    loaderEl.classList.remove('hidden')
     const response = await fetch('https://words.dev-apis.com/validate-word', {
         method: 'POST',
         body: JSON.stringify({ word: val }),
@@ -60,6 +61,7 @@ const compareWords = (guessWord, value) => {
 }
 
 const getWordOfTheDay = async () => {
+    loaderEl.classList.remove('hidden')
     const response = await fetch('https://words.dev-apis.com/word-of-the-day')
     const message = await response.json()
     return message.word
@@ -82,6 +84,7 @@ const handleEnter = async value => {
 
     if (guessLength === wordLength) {
         const isGuessValid = await validateWord(guess)
+        loaderEl.classList.add('hidden')
         
         if (isGuessValid) {
             const backgrounds = compareWords(guess, value)
@@ -122,6 +125,7 @@ const handleEnter = async value => {
 
 const gamePlay = async () => {
     const wordOfTheDay = await getWordOfTheDay()
+    loaderEl.classList.add('hidden')
     
     document.addEventListener('keydown', e => {
         console.log('pressing', isTakingInput)
