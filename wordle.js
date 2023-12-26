@@ -46,13 +46,19 @@ const compareWords = (guessWord, value) => {
 
     for (let i = 0; i < value.length; i++) {
         if (value[i] === guessWord[i]) {
-            arr.push('correct')
+            arr[i] = 'correct'
             wordObj[guessWord[i]] -= 1
+        }
+    }
+
+    for (let i = 0; i < value.length; i++) {
+        if (value[i] === guessWord[i]) {
+
         } else if (value.includes(guessWord[i]) && (wordObj[guessWord[i]] > 0)) {
-            arr.push('close')
+            arr[i] = 'close'
             wordObj[guessWord[i]] -= 1
         } else {
-            arr.push('wrong')
+            arr[i] = 'wrong'
         }
 
     }
